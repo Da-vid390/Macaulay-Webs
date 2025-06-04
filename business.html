@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Local Business Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d0d0d;
+      color: white;
+    }
+
+    header {
+      background-color: #007BFF;
+      padding: 1.2em;
+      text-align: center;
+      font-size: 1.4em;
+      font-weight: bold;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .hero {
+      padding: 4em 2em;
+      background: linear-gradient(135deg, #007BFF, #0056b3);
+      text-align: center;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 2.8em;
+      margin-bottom: 0.5em;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 3em 1.5em;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h2 {
+      color: #007BFF;
+      margin-bottom: 1em;
+      font-size: 2em;
+    }
+
+    .services, .testimonials {
+      display: grid;
+      gap: 2em;
+    }
+
+    .service, .testimonial {
+      background-color: #1a1a1a;
+      padding: 1.5em;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    .service h3, .testimonial h3 {
+      color: #007BFF;
+      margin-bottom: 0.5em;
+    }
+
+    .testimonial p {
+      font-style: italic;
+    }
+
+    .contact-section {
+      background-color: #111;
+      padding: 3em 1.5em;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      color: #007BFF;
+    }
+
+    form {
+      margin-top: 2em;
+      display: grid;
+      gap: 1em;
+      max-width: 500px;
+      margin-inline: auto;
+    }
+
+    input, textarea {
+      padding: 1em;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 1em;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1em;
+      box-shadow: 0 0 10px #007BFF;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2em 1em;
+      background-color: #0d0d0d;
+      font-size: 0.9em;
+      color: #888;
+    }
+
+    @media(min-width: 768px) {
+      .services, .testimonials {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header> <div style="text-align: right; padding: 1em;">
+  <a href="index.html" style="color: white; background-color: #0056b3; padding: 0.5em 1em; border-radius: 999px; text-decoration: none; font-weight: bold; box-shadow: 0 0 8px #007BFF;">← Back to Home</a>
+</div>
+    🚀 Your Local Business</header>
+
+  <section class="hero">
+    <h1>Boost Your Business Online</h1>
+    <p>Get a modern, mobile-friendly website that attracts customers and builds trust — built just for your business.</p>
+  </section>
+
+  <section class="section services">
+    <h2>What You Get</h2>
+    <div class="service">
+      <h3>📱 Mobile Ready</h3>
+      <p>Responsive design that looks amazing on phones, tablets, and desktops.</p>
+    </div>
+    <div class="service">
+      <h3>⚡ Fast & Secure</h3>
+      <p>Speed-optimized and SSL-secure for better SEO and customer trust.</p>
+    </div>
+    <div class="service">
+      <h3>🛠️ Fully Custom</h3>
+      <p>Design and features tailored to your brand, customers, and goals.</p>
+    </div>
+  </section>
+
+  <section class="section testimonials">
+    <h2>Client Feedback</h2>
+    <div class="testimonial">
+      <h3>“Amazing site!”</h3>
+      <p>“Macaulay delivered our site in days, and it looks better than we imagined.”</p>
+    </div>
+    <div class="testimonial">
+      <h3>“Boosted our sales”</h3>
+      <p>“After launching the new website, we saw a 40% increase in leads. Highly recommend!”</p>
+    </div>
+    <div class="testimonial">
+      <h3>“So easy to work with”</h3>
+      <p>“Friendly, fast and creative. The best web designer I’ve hired so far.”</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <h2>Contact Me</h2>
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Macaulay Webs. Built with style and purpose.
+  </footer>
+
+</body>
+</html>

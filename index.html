@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Macaulay Webs.</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #111;
+      color: white;
+    }
+
+    header {
+      background-color: #1e1e1e;
+      padding: 1em;
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .hero {
+      padding: 2em 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: #000;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-top: 0.5em;
+      max-width: 500px;
+    }
+
+    .cta-button {
+      margin-top: 1.5em;
+      padding: 1em 1.5em;
+      background-color: #00ffd5;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 999px;
+      font-size: 1em;
+      box-shadow: 0 0 15px #00ffd5;
+      cursor: pointer;
+    }
+
+    /* Toggle Header Section */
+    .features-toggle {
+      margin: 3em 1em;
+    }
+
+    .features-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      background: #2b2b2b;
+      padding: 1em 1.5em;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      font-size: 1.2em;
+      color: #00ffd5;
+      user-select: none;
+    }
+
+    #arrow {
+      font-size: 1.5em;
+      transition: transform 0.3s ease;
+    }
+
+    .features {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s ease-in-out;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin-top: 1.5em;
+    }
+
+    .card {
+      background-color: #222;
+      padding: 1.5em;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    .card h3 {
+      color: #00ffd5;
+      margin-bottom: 0.5em;
+    }
+
+    .card p {
+      font-size: 1em;
+      color: #ccc;
+    }
+
+    /* Sample Sites Section */
+    #sample-sites a {
+      color: #00ffd5;
+      text-decoration: none;
+    }
+
+    #sample-sites a:hover {
+      text-decoration: underline;
+    }
+    .sample-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
+      margin-top: 2em;
+    }
+
+    .sample-card {
+      background-color: #222;
+      padding: 1.5em;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, opacity 0.6s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .sample-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .sample-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Floating Contact Button */
+    #contact-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #00ffd5;
+      color: black;
+      padding: 1em 1.2em;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1em;
+      box-shadow: 0 0 10px #00ffd5;
+      cursor: pointer;
+      display: none; /* hidden by default */
+      z-index: 999;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    #contact-button.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Contact Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #1e1e1e;
+      padding: 2em;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 400px;
+      color: white;
+      box-shadow: 0 0 20px rgba(0,255,213,0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #00ffd5;
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      margin: 0.5em 0;
+      padding: 0.8em;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    .modal-content button {
+      background: #00ffd5;
+      color: black;
+      font-weight: bold;
+      border: none;
+      padding: 0.8em 1.2em;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1em;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1em;
+      right: 1.2em;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #ccc ;
+    }
+
+    @keyframes fadeIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>&lt;/&gt; Macaulay Webs</header>
+
+  <section class="hero">
+    <h1>Need a Website?</h1>
+    <p>Are you a Business owner, freelancer,job seeker —heck it doesn’t even matter who you are. If you need a website site then, you’re in the right place.</p>
+    <button class="cta-button">Click Here & Follow Me</button>
+  </section>
+
+  <section class="features-toggle">
+    <div class="features-header" onclick="toggleFeatures()">
+      <h2>Why Choose Me?</h2>
+      <span id="arrow">&#x25BC;</span>
+    </div>
+    <div class="features" id="features-section">
+      <div class="cards">
+        <div class="card">
+          <h3>Modern Design</h3>
+          <p>Clean, sleek and responsive sites that look great on any device.</p>
+        </div>
+        <div class="card">
+          <h3>Fast Delivery</h3>
+          <p>Your site ready in days, not weeks. Quick, efficient, and reliable.</p>
+        </div>
+        <div class="card">
+          <h3>Custom Everything</h3>
+          <p>Everything tailored — from colors and layout to features and flow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sample-sites" style="padding: 3em 2em;">
+    <h2>Sample Website Styles</h2>
+    <div class="sample-cards">
+      <div class="sample-card">
+        <h3><a href="portfolio.html" target="_blank">🌟 Personal Portfolio</a></h3>
+        <p>Perfect for freelancers or professionals. Clean, responsive, and showcases your work.</p>
+      </div>
+      <div class="sample-card">
+        <h3><a href="business.html" target="_blank">🛍️ Local Business Page</a></h3>
+        <p>Designed to convert visitors. Includes product sections, testimonials, and a contact form.</p>
+      </div>
+      <div class="sample-card">
+        <h3><a href="landing.html" target="_blank">🚀 Service Landing Page</a></h3>
+        <p>Great for promoting a single product or service with call-to-action sections and lead forms.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="contact-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Contact Me</h2>
+      <form name="contact" netlify netlify-honeypot="bot-field" onsubmit="submitForm(event)">
+  <input type="hidden" name="form-name" value="contact" />
+  <input type="text" name="name" placeholder="Your Name" required />
+  <input type="email" name="email" placeholder="Your Email" required />
+  <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+    </div>
+  </div>
+
+  <button id="contact-button" onclick="openModal()">Contact</button>
+
+  <script>
+    let isOpen = false;
+    function toggleFeatures() {
+      const section = document.getElementById("features-section");
+      const arrow = document.getElementById("arrow");
+      isOpen = !isOpen;
+
+      if (isOpen) {
+        section.style.maxHeight = section.scrollHeight + "px";
+        arrow.innerHTML = "&#x25B2;"; // Up arrow
+      } else {
+        section.style.maxHeight = "0";
+        arrow.innerHTML = "&#x25BC;"; // Down arrow
+      }
+    }
+
+    // Initialize collapsed
+    window.onload = () => {
+      const section = document.getElementById("features-section");
+      section.style.overflow = "hidden";
+      section.style.maxHeight = "0";
+    };
+
+    const sampleCards = document.querySelectorAll('.sample-card');
+
+    const revealCardsOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.9;
+
+      sampleCards.forEach((card, i) => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < triggerBottom) {
+          card.style.transitionDelay = `${i * 0.2}s`;
+          card.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealCardsOnScroll);
+    window.addEventListener('load', revealCardsOnScroll);
+
+    function openModal() {
+      document.getElementById("contact-modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("contact-modal").style.display = "none";
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      alert("Thanks for your message!");
+      closeModal();
+    }
+
+    // Close when clicking outside the modal
+    window.onclick = function(event) {
+      const modal = document.getElementById("contact-modal");
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+
+    const contactBtn = document.getElementById('contact-button');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        contactBtn.classList.add('show');
+      } else {
+        contactBtn.classList.remove('show');
+      }
+    });
+  </script>
+  <footer>
+    <p> &copy; 2025 Macaulay Web Designs 🔥.</p>
+  </footer>
+</body>
+</html>
