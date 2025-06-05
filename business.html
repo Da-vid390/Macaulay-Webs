@@ -1,29 +1,73 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Local Business Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* Global Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background-color: #0d0d0d;
       color: white;
+      line-height: 1.6;
     }
 
+    /* Container for content centering */
+    .container {
+      max-width: 1000px; /* Max width for content on large screens */
+      margin: 0 auto; /* Centers the container */
+      padding: 0 1rem; /* Consistent horizontal padding for all screen sizes */
+    }
+
+    /* Header Section */
     header {
       background-color: #007BFF;
-      padding: 1.2em;
+      padding: 1.2em 1rem; /* Adjust padding for mobile */
       text-align: center;
       font-size: 1.4em;
       font-weight: bold;
       color: white;
       letter-spacing: 1px;
+      position: relative; /* For absolute positioning of the back button */
     }
 
+    /* Back to Home Button in Header */
+    .header-back-button-wrapper {
+      position: absolute; /* Position relative to header */
+      top: 1em;
+      right: 1em;
+      /* Using a wrapper to keep the button's padding from affecting the header title */
+    }
+
+    .header-back-button {
+      color: white;
+      background-color: #0056b3;
+      padding: 0.5em 1em;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 8px #007BFF;
+      display: inline-block; /* Essential for padding to apply */
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header-back-button:hover {
+      background-color: #00408c;
+      box-shadow: 0 0 12px #007BFF;
+    }
+
+    /* Hero Section */
     .hero {
-      padding: 4em 2em;
+      padding: 4em 1rem; /* Use container's padding for consistency, adjust top/bottom */
       background: linear-gradient(135deg, #007BFF, #0056b3);
       text-align: center;
       color: white;
@@ -40,10 +84,11 @@
       margin: 0 auto;
     }
 
+    /* General Section Styling */
     .section {
-      padding: 3em 1.5em;
-      max-width: 1000px;
-      margin: auto;
+      padding: 3em 1rem; /* Use container's padding for consistency, adjust top/bottom */
+      /* max-width and margin: auto are handled by .container */
+      text-align: center; /* Center content within these sections by default */
     }
 
     .section h2 {
@@ -52,9 +97,12 @@
       font-size: 2em;
     }
 
-    .services, .testimonials {
+    /* Services & Testimonials Grid */
+    .services-grid, .testimonials-grid { /* Renamed to avoid conflict with .section */
       display: grid;
       gap: 2em;
+      margin-top: 1em; /* Add some margin from the heading */
+      text-align: left; /* Allow card content to be left-aligned */
     }
 
     .service, .testimonial {
@@ -62,6 +110,12 @@
       padding: 1.5em;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service:hover, .testimonial:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.6);
     }
 
     .service h3, .testimonial h3 {
@@ -73,9 +127,10 @@
       font-style: italic;
     }
 
+    /* Contact Section */
     .contact-section {
       background-color: #111;
-      padding: 3em 1.5em;
+      padding: 3em 1rem; /* Use container's padding for consistency, adjust top/bottom */
       text-align: center;
     }
 
@@ -88,7 +143,7 @@
       display: grid;
       gap: 1em;
       max-width: 500px;
-      margin-inline: auto;
+      margin-inline: auto; /* Centers the form */
     }
 
     input, textarea {
@@ -96,6 +151,13 @@
       border: none;
       border-radius: 8px;
       font-size: 1em;
+      background-color: #2a2a2a; /* Slightly lighter input background */
+      color: white;
+    }
+
+    /* Style for textarea placeholder */
+    textarea::placeholder {
+      color: #bbb;
     }
 
     button {
@@ -108,79 +170,125 @@
       cursor: pointer;
       font-size: 1em;
       box-shadow: 0 0 10px #007BFF;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
+    button:hover {
+      background-color: #0056b3;
+      box-shadow: 0 0 15px #007BFF;
+    }
+
+    /* Footer Section */
     footer {
       text-align: center;
-      padding: 2em 1em;
+      padding: 2em 1rem; /* Adjust padding for mobile */
       background-color: #0d0d0d;
       font-size: 0.9em;
       color: #888;
     }
 
+    /* Desktop Media Queries */
     @media(min-width: 768px) {
-      .services, .testimonials {
-        grid-template-columns: repeat(3, 1fr);
+      header {
+        padding: 1.2em 2em; /* More padding on desktop */
+      }
+      .header-back-button-wrapper {
+          right: 2em; /* Adjust position for larger screens */
+      }
+      .services-grid, .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+        text-align: left; /* Ensure content within cards is left-aligned */
+      }
+      .hero {
+        padding: 6em 2em; /* More vertical padding on desktop */
+      }
+      .section {
+        padding: 4em 2em; /* More vertical padding on desktop */
+      }
+      .contact-section {
+        padding: 4em 2em; /* More vertical padding on desktop */
+      }
+      footer {
+        padding: 3em 2em; /* More padding on desktop */
       }
     }
   </style>
 </head>
 <body>
 
-  <header> <div style="text-align: right; padding: 1em;">
-  <a href="index.html" style="color: white; background-color: #0056b3; padding: 0.5em 1em; border-radius: 999px; text-decoration: none; font-weight: bold; box-shadow: 0 0 8px #007BFF;">← Back to Home</a>
-</div>
-    🚀 Your Local Business</header>
+  <header>
+    <div class="container">
+      <div class="header-back-button-wrapper">
+        <a href="index.html" class="header-back-button">← Back to Home</a>
+      </div>
+      🚀 Your Local Business
+    </div>
+  </header>
 
-  <section class="hero">
-    <h1>Boost Your Business Online</h1>
-    <p>Get a modern, mobile-friendly website that attracts customers and builds trust — built just for your business.</p>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Boost Your Business Online</h1>
+        <p>Get a modern, mobile-friendly website that attracts customers and builds trust — built just for your business.</p>
+      </div>
+    </section>
 
-  <section class="section services">
-    <h2>What You Get</h2>
-    <div class="service">
-      <h3>📱 Mobile Ready</h3>
-      <p>Responsive design that looks amazing on phones, tablets, and desktops.</p>
-    </div>
-    <div class="service">
-      <h3>⚡ Fast & Secure</h3>
-      <p>Speed-optimized and SSL-secure for better SEO and customer trust.</p>
-    </div>
-    <div class="service">
-      <h3>🛠️ Fully Custom</h3>
-      <p>Design and features tailored to your brand, customers, and goals.</p>
-    </div>
-  </section>
+    <section class="section">
+      <div class="container">
+        <h2>What You Get</h2>
+        <div class="services-grid"> <div class="service">
+            <h3>📱 Mobile Ready</h3>
+            <p>Responsive design that looks amazing on phones, tablets, and desktops.</p>
+          </div>
+          <div class="service">
+            <h3>⚡ Fast & Secure</h3>
+            <p>Speed-optimized and SSL-secure for better SEO and customer trust.</p>
+          </div>
+          <div class="service">
+            <h3>🛠️ Fully Custom</h3>
+            <p>Design and features tailored to your brand, customers, and goals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="section testimonials">
-    <h2>Client Feedback</h2>
-    <div class="testimonial">
-      <h3>“Amazing site!”</h3>
-      <p>“Macaulay delivered our site in days, and it looks better than we imagined.”</p>
-    </div>
-    <div class="testimonial">
-      <h3>“Boosted our sales”</h3>
-      <p>“After launching the new website, we saw a 40% increase in leads. Highly recommend!”</p>
-    </div>
-    <div class="testimonial">
-      <h3>“So easy to work with”</h3>
-      <p>“Friendly, fast and creative. The best web designer I’ve hired so far.”</p>
-    </div>
-  </section>
+    <section class="section">
+      <div class="container">
+        <h2>Client Feedback</h2>
+        <div class="testimonials-grid"> <div class="testimonial">
+            <h3>“Amazing site!”</h3>
+            <p>“Macaulay delivered our site in days, and it looks better than we imagined. Professional and stunning!”</p>
+          </div>
+          <div class="testimonial">
+            <h3>“Boosted our sales”</h3>
+            <p>“After launching the new website, we saw a 40% increase in leads. Highly recommend for any business!”</p>
+          </div>
+          <div class="testimonial">
+            <h3>“So easy to work with”</h3>
+            <p>“Friendly, fast and creative. The best web designer I’ve hired so far. Communication was excellent.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="contact-section">
-    <h2>Contact Me</h2>
-    <form name="contact" method="POST" data-netlify="true">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    <section class="contact-section">
+      <div class="container">
+        <h2>Ready to Grow Your Business?</h2>
+        <p>Reach out today for a free consultation and see how a new website can transform your online presence.</p>
+        <form name="contact" method="POST" data-netlify="true">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 Macaulay Webs. Built with style and purpose.
+    <div class="container">
+      &copy; 2025 Macaulay Webs. Built with style and purpose.
+    </div>
   </footer>
 
 </body>
