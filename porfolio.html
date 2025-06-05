@@ -1,168 +1,289 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    body {
+    /* Global Reset & Base Styles */
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Poppins', sans-serif;
       background: #0a0a0a;
       color: white;
-    }header {
-  padding: 1.5em;
-  text-align: center;
-  background-color: #111;
-  font-size: 1.5em;
-  font-weight: 800;
-  color: #00ffd5;
-  box-shadow: 0 2px 8px rgba(0, 255, 213, 0.1);
-}
+      line-height: 1.6;
+    }
 
-.hero {
-  text-align: center;
-  padding: 4em 2em;
-}
+    /* Container for content centering */
+    .container {
+      max-width: 1000px; /* Adjust max-width as per your desired desktop layout */
+      margin: 0 auto; /* Centers the container */
+      padding: 0 1rem; /* Consistent padding for smaller screens */
+    }
 
-.hero h1 {
-  font-size: 2.8em;
-  margin: 0;
-}
+    /* Header Section */
+    header {
+      padding: 1.5em 1rem; /* Adjust padding for mobile */
+      text-align: center;
+      background-color: #111;
+      font-size: 1.5em;
+      font-weight: 800;
+      color: #00ffd5;
+      box-shadow: 0 2px 8px rgba(0, 255, 213, 0.1);
+      position: relative; /* For absolute positioning of the back button */
+    }
 
-.hero p {
-  font-size: 1.2em;
-  margin-top: 1em;
-  color: #ccc;
-}
+    /* Back to Home Button in Header */
+    .header-back-button-wrapper {
+      position: absolute; /* Position relative to header */
+      top: 1em;
+      right: 1em;
+      /* Using a wrapper to keep the button's padding from affecting the header title */
+    }
 
-.hero button {
-  margin-top: 2em;
-  background: #00ffd5;
-  color: black;
-  padding: 1em 2em;
-  border: none;
-  border-radius: 999px;
-  font-size: 1em;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 0 15px #00ffd5;
-}
+    .header-back-button {
+      color: white;
+      background-color: #0056b3;
+      padding: 0.5em 1em;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 8px #007BFF;
+      display: inline-block; /* Essential for padding to apply */
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.projects {
-  padding: 3em 2em;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+    .header-back-button:hover {
+      background-color: #00408c;
+      box-shadow: 0 0 12px #007BFF;
+    }
 
-.projects h2 {
-  text-align: center;
-  color: #00ffd5;
-  font-size: 2em;
-}
 
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2em;
-  margin-top: 2em;
-}
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 4em 1rem; /* Adjust padding for mobile */
+    }
 
-.project-card {
-  background: #1a1a1a;
-  border-radius: 12px;
-  padding: 1.5em;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .hero h1 {
+      font-size: 2.8em;
+      margin: 0;
+    }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(0, 255, 213, 0.3);
-}
+    .hero p {
+      font-size: 1.2em;
+      margin-top: 1em;
+      color: #ccc;
+    }
 
-.project-card h3 {
-  color: #00ffd5;
-}
+    .hero button {
+      margin-top: 2em;
+      background: #00ffd5;
+      color: black;
+      padding: 1em 2em;
+      border: none;
+      border-radius: 999px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00ffd5;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.project-card p {
-  color: #ccc;
-}
+    .hero button:hover {
+        background-color: #00e0b3; /* Slightly darker teal on hover */
+        box-shadow: 0 0 20px #00ffd5;
+    }
 
-.skills {
-  padding: 3em 2em;
-  background: #111;
-}
+    /* Projects Section */
+    .projects {
+      padding: 3em 1rem; /* Adjust padding for mobile */
+    }
 
-.skills h2 {
-  text-align: center;
-  color: #00ffd5;
-  font-size: 2em;
-}
+    .projects h2 {
+      text-align: center;
+      color: #00ffd5;
+      font-size: 2em;
+    }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1.5em;
-  margin-top: 2em;
-  text-align: center;
-}
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2em;
+      margin-top: 2em;
+    }
 
-.skills-grid div {
-  background: #1f1f1f;
-  padding: 1.2em;
-  border-radius: 10px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-  font-weight: bold;
-  color: #ccc;
-}
+    .project-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 1.5em;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-footer {
-  text-align: center;
-  padding: 2em;
-  background: #000;
-  color: #777;
-  font-size: 0.9em;
-}
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 255, 213, 0.3);
+    }
 
+    .project-card h3 {
+      color: #00ffd5;
+    }
+
+    .project-card p {
+      color: #ccc;
+    }
+
+    /* Skills Section */
+    .skills {
+      padding: 3em 1rem; /* Adjust padding for mobile */
+      background: #111;
+    }
+
+    .skills h2 {
+      text-align: center;
+      color: #00ffd5;
+      font-size: 2em;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1.5em;
+      margin-top: 2em;
+      text-align: center;
+    }
+
+    .skills-grid div {
+      background: #1f1f1f;
+      padding: 1.2em;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    /* Footer Section */
+    footer {
+      text-align: center;
+      padding: 2em 1rem; /* Adjust padding for mobile */
+      background: #000;
+      color: #777;
+      font-size: 0.9em;
+    }
+
+    /* Desktop Media Queries */
+    @media (min-width: 768px) {
+        header {
+            padding: 1.5em 2em; /* More padding on desktop */
+        }
+        .header-back-button-wrapper {
+            right: 2em; /* Adjust position for larger screens */
+        }
+    }
+
+
+    @media (min-width: 1024px) {
+      .hero, .projects, .skills {
+        /* These sections already use .container, which handles max-width and margin:auto */
+        /* You can remove max-width and margin-left/right here if .container is applied */
+        text-align: center; /* Ensures text content within these sections is centered */
+      }
+
+      .hero h1 {
+        font-size: 3.5rem; /* Larger font for desktop hero heading */
+      }
+
+      .hero p {
+        font-size: 1.5rem; /* Larger font for desktop hero paragraph */
+      }
+
+      .projects h2,
+      .skills h2 {
+        font-size: 2.8rem; /* Larger font for desktop section headings */
+      }
+
+      .skills-grid {
+        max-width: 800px; /* Constrain skill grid width to center it */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .project-grid {
+        /* No specific justify-items here if it's within a centered container */
+      }
+
+      header, footer {
+        /* These sections also use .container or will be centered by body/root if no container */
+        /* Ensuring they are within a .container provides consistent centering */
+      }
+    }
   </style>
 </head>
 <body>
-  <header> <div style="text-align: right; padding: 1em;">
-  <a href="index.html" style="color: white; background-color: #0056b3; padding: 0.5em 1em; border-radius: 999px; text-decoration: none; font-weight: bold; box-shadow: 0 0 8px #007BFF;">← Back to Home</a>
-</div>
-    My Portfolio</header>  <section class="hero">
-    <h1>Hello, I'm Macaulay</h1>
-    <p>I design and build fast, modern websites for professionals and businesses.</p>
-    <button onclick="window.location.href='mailto:youremail@example.com'">Contact Me</button>
-  </section>  <section class="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>Portfolio Site</h3>
-        <p>Personal website to showcase work, skills and contact info. Clean, modern layout.</p>
+  <header>
+    <div class="container">
+      <div class="header-back-button-wrapper">
+        <a href="index.html" class="header-back-button">← Back to Home</a>
       </div>
-      <div class="project-card">
-        <h3>Business Website</h3>
-        <p>Responsive local business site designed to drive sales and engagement.</p>
-      </div>
-      <div class="project-card">
-        <h3>Landing Page</h3>
-        <p>Product-focused landing page optimized for conversions with CTA buttons and testimonials.</p>
-      </div>
+      My Portfolio
     </div>
-  </section>  <section class="skills">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div>HTML</div>
-      <div>CSS</div>
-      <div>JavaScript</div>
-      <div>Responsive Design</div>
-      <div>UI/UX</div>
-      <div>SEO</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Hello, I'm Macaulay</h1>
+        <p>I design and build fast, modern websites for professionals and businesses.</p>
+        <button onclick="window.location.href='mailto:macaulayoreoluwa5002@example.com'">Contact Me</button>
+      </div>
+    </section>
+
+    <section class="projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <h3>Portfolio Site</h3>
+            <p>Personal website to showcase work, skills and contact info. Clean, modern layout.</p>
+          </div>
+          <div class="project-card">
+            <h3>Business Website</h3>
+            <p>Responsive local business site designed to drive sales and engagement.</p>
+          </div>
+          <div class="project-card">
+            <h3>Landing Page</h3>
+            <p>Product-focused landing page optimized for conversions with CTA buttons and testimonials.</p>
+          </div>
+          </div>
+      </div>
+    </section>
+
+    <section class="skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div>HTML</div>
+          <div>CSS</div>
+          <div>JavaScript</div>
+          <div>React</div> <div>Node.js</div> <div>Responsive Design</div>
+          <div>UI/UX</div>
+          <div>SEO</div>
+          <div>Git</div> </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      &copy; 2025 Macaulay Webs. All rights reserved.
     </div>
-  </section>  <footer>
-    &copy; 2025 Macaulay Webs. All rights reserved.
   </footer>
 </body>
 </html>
